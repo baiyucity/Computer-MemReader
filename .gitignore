@@ -1,0 +1,24 @@
+# Dependencies and build output
+node_modules/
+/dist/
+/release/
+*.tsbuildinfo
+*.log
+*.exe
+*.msi
+*.asar
+
+# Local disk scans, exports, settings, and diagnostics
+.qa/
+snapshots-v1/
+snapshot-*.json
+index-v1.json
+memreader-*.json
+theme.json
+userData/
+exports/
+backups/
+.env
+.env.*
+Thumbs.db
+Desktop.ini
