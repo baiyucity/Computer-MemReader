@@ -1,0 +1,80 @@
+.disk-memory-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  margin: 0 0 19px;
+  padding: 16px 18px;
+  border-radius: 13px;
+  color: var(--ink);
+  background: linear-gradient(115deg, color-mix(in srgb, var(--accent) 4%, transparent), transparent 55%), rgba(var(--panel-rgb), var(--glass-opacity));
+}
+.disk-memory-icon {
+  width: 35px;
+  height: 35px;
+  border: 1px solid color-mix(in srgb, var(--accent) 10%, transparent);
+  border-radius: 10px;
+  background: var(--accent-soft);
+  display: grid;
+  place-items: center;
+  color: var(--accent-ink, var(--accent));
+  flex: 0 0 auto;
+}
+.disk-memory-content { flex: 1; min-width: 0; }
+.disk-memory-title-row { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; min-height: 19px; }
+.disk-memory-title-row > strong { font-size: 12px; font-weight: 600; letter-spacing: .05px; line-height: 1.7; }
+.disk-memory-state { display: inline-flex; align-items: center; gap: 4px; padding: 3px 6px; border-radius: 5px; color: var(--accent-ink, var(--accent)); background: var(--accent-soft); font-size: 9px; font-weight: 500; white-space: nowrap; }
+.disk-memory-state.is-partial { color: #956b3d; background: rgba(198, 154, 94, .11); }
+.disk-memory-times { display: flex; align-items: center; flex-wrap: wrap; column-gap: 17px; row-gap: 5px; margin-top: 7px; color: var(--soft-ink); font-size: 10px; line-height: 1.6; }
+.disk-memory-times > span { display: inline-flex; align-items: center; gap: 5px; }
+.disk-memory-times svg { color: var(--muted); flex-shrink: 0; }
+.disk-memory-times time { font-variant-numeric: tabular-nums; font-weight: 500; }
+.disk-memory-count { color: var(--muted); font-size: 9px; }
+.disk-memory-description { margin: 7px 0 0; color: var(--soft-ink); font-size: 10px; line-height: 1.9; }
+.disk-memory-warnings { display: flex; align-items: flex-start; gap: 5px; margin-top: 6px; color: #966d41; font-size: 10px; line-height: 1.85; }
+.disk-memory-warnings > svg { flex-shrink: 0; margin-top: 3px; }
+.disk-memory-warnings p { margin: 0; overflow-wrap: anywhere; }
+.disk-memory-rescan.secondary-button { align-self: center; flex-shrink: 0; padding: 9px 11px; font-size: 10px; white-space: nowrap; }
+.disk-memory-rescan.secondary-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.disk-memory-info.is-loading .disk-memory-title-row > strong { color: var(--soft-ink); }
+.disk-memory-spinner { animation: disk-memory-spin 1s linear infinite; }
+.drive-cache-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  font-size: 8px;
+  font-weight: 450;
+  letter-spacing: .1px;
+  color: var(--muted);
+  line-height: 1.7;
+  white-space: nowrap;
+}
+.drive-cache-badge > svg { color: currentColor; flex-shrink: 0; }
+.drive-cache-badge.is-saved { color: var(--accent-ink, var(--accent)); }
+.drive-cache-badge.is-partial { color: #987848; }
+.drive-cache-empty-dot { width: 4px; height: 4px; border-radius: 50%; border: 1px solid currentColor; margin: 0 3px; flex: 0 0 auto; }
+.disk-nav .drive-cache-badge { display: flex; margin-top: 3px; }
+.disk-nav .drive-cache-badge > svg { color: currentColor; }
+[data-theme=dark] .disk-memory-state.is-partial, [data-theme=dark] .disk-memory-warnings, [data-theme=dark] .drive-cache-badge.is-partial { color: #d1b28a; }
+@keyframes disk-memory-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .disk-memory-spinner { animation: none; } }
+[data-motion=off] .disk-memory-spinner { animation: none; }
+@media (max-width: 1200px) {
+  .disk-memory-info { padding: 14px 16px; gap: 11px; }
+  .disk-memory-times { column-gap: 13px; }
+  .disk-memory-count { width: 100%; }
+}
+@media (max-width: 760px) {
+  .disk-memory-info { flex-wrap: wrap; gap: 10px; padding: 14px; }
+  .disk-memory-icon { width: 31px; height: 31px; border-radius: 9px; }
+  .disk-memory-content { min-width: 170px; flex-basis: calc(100% - 45px); }
+  .disk-memory-title-row > strong { font-size: 11px; }
+  .disk-memory-times { font-size: 9px; }
+  .disk-memory-description, .disk-memory-warnings { font-size: 9px; }
+  .disk-memory-rescan.secondary-button { margin-left: 41px; }
+}
+@media (max-width: 400px) {
+  .disk-memory-content { min-width: 0; }
+  .disk-memory-times > span { flex-wrap: wrap; }
+  .disk-memory-state { font-size: 8px; }
+}
